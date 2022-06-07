@@ -1,0 +1,10 @@
+release/Avatar.o
+release/Server.o
+release/World.o
+release/identification.o
+release/main.o
+release/mainwindow.o
+release/moc_Server.o
+release/moc_World.o
+release/moc_identification.o
+release/moc_mainwindow.o
