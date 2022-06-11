@@ -1,0 +1,8 @@
+ServerMmo/debug
+.qmake.stash
+Makefile
+*.Debug
+*.Release
+*.pro
+*.user
+*.ui
