@@ -43,8 +43,8 @@ void World::DeleteClient(Client* client)
 void World::Damage(unsigned int p_id, int damage)
 {
     for (int j = 0; j < player.size(); j++) //ищем нужный подайди
-        if (player[j]->avatar.p_id == p_id) {
-            player[j]->avatar.xp -= damage; //наносим урон
+        if (player[j]->avatar.pid == p_id) {
+            player[j]->avatar.hp -= damage; //наносим урон
             emit socketStructWrite(&player[j]->avatar, player[j]); //отправляем структуру данных с изменениями этому же клиенту
             break;
         }

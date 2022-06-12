@@ -58,7 +58,7 @@ void Server::DeleteClient()
 
             //рассылаем все клиентам запросы о отключении игрока
             QByteArray itog = "{\"type\":\"Unconnect\",\"p_id\":\"";
-            itog.append(QString::number(clients[c]->avatar.p_id));
+            itog.append(QString::number(clients[c]->avatar.pid));
             itog.append("\"}");
 
             for (int j = 0; j < clients.size(); j++)

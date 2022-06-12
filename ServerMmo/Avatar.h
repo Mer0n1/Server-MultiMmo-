@@ -1,4 +1,4 @@
-#ifndef AVATAR_H
+﻿#ifndef AVATAR_H
 #define AVATAR_H
 
 #include <QMainWindow>
@@ -7,22 +7,13 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
-class Avatar
+struct Avatar
 {
-    /* Класс-структура аватара игрока */
-public:
-    Avatar();
-
-    unsigned int id;
-    unsigned int p_id;
-    unsigned int id_character;
+    int id, pid;
     int socketDescriptor;
-
-    int xp;
-    unsigned int maxXp;
-
+    int hp, maxHp;
     int x, y;
-    bool life; //жизнь
+    bool life;
 };
 
 

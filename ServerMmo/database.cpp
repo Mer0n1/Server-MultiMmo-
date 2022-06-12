@@ -1,4 +1,4 @@
-#include "database.h"
+﻿#include "database.h"
 
 
 /*Database::Database()
