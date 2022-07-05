@@ -6,7 +6,7 @@
 #include "Avatar.h"
 #include "Client.h"
 
-class World : public QDialog
+class World : public QObject
 {
     Q_OBJECT
     /*

@@ -3,7 +3,7 @@
 
 World::World()
 {
-    distance = 400; //дистанция при которой происходит Replication()
+    distance = 1000; //дистанция при которой происходит Replication()
 }
 
 World::~World()

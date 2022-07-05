@@ -85,8 +85,10 @@ void Server::incomingConnection(int socketDescriptor)
     connect(clients.back()->socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
     connect(clients.back()->socket, SIGNAL(disconnected()), this, SLOT(DeleteClient()));
 
-    clients.back()->socket->write("You connected. You number ID-sock: "); //отправляем номер дескриптора
-    clients.back()->socket->write(QByteArray::number(socketDescriptor)); //передать чистый int
+    //clients.back()->socket->write("You connected. You number ID-sock: "); //отправляем номер дескриптора
+    //clients.back()->socket->write(QByteArray::number(socketDescriptor)); //передать чистый int
+    clients.back()->socket->write("\"Connect\":\"true\",\"Descriptor\":\""
+                                 + QByteArray::number(socketDescriptor) + "\"");
     clients.back()->socket->waitForConnected(500);
 }
 

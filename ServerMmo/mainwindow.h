@@ -23,6 +23,7 @@ public slots:
     void updateList(); //обновить список игроков
     void addItem(QString); //добавить в список нового клиента
     void RemoveList(int); //удалить из списка клиента
+    void kickAll(); //кикнуть всех
 
     void on_LaunchServer_clicked(); //запуск и остановка сервера
     void on_pushButton_clicked(); //kicked

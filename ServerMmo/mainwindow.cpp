@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete server;
 }
 
 
@@ -42,6 +43,11 @@ void MainWindow::RemoveList(int item) //удаление строк
     updateList();
 }
 
+void MainWindow::kickAll()
+{
+    for (int j = 0; j < server->clients.size(); j++) //отправка всем запросов о кике
+        server->socketWrite("{\"type\":\"kick\"}", server->clients[j]->avatar.socketDescriptor);
+}
 
 void MainWindow::on_LaunchServer_clicked() //запуск/отключение сервера
 {
@@ -53,8 +59,7 @@ void MainWindow::on_LaunchServer_clicked() //запуск/отключение �
         ui->ActiveServer->setStyleSheet("color:red;");
         ui->ActiveServer->setText("Неактивен");
 
-        for (int j = 0; j < server->clients.size(); j++) //отправка всем запросов о кике
-            server->socketWrite("{\"type\":\"kick\"}", server->clients[j]->avatar.socketDescriptor);
+        kickAll();
     }
     else {
         bool active = server->LaunchServer(); //запускаем сервер
