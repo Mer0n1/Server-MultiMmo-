@@ -18,6 +18,7 @@ public:
     ~World();
 
     QVector<Client*> player; //игроки находящиеся в данном мире
+    QVector<Avatar > mobs; //(*Update SMS) - мобы находящиеся на внешнем модуле
 
     void Replication(int); //обновление окружающего мира вокруг игроков
     void Damage(unsigned int p_id, int damage); //нанесение урона игроку
@@ -27,6 +28,7 @@ public:
 
 signals:
     void socketStructWrite(Avatar*, Client*);
+    void socketWrite(QByteArray str, int socketDescriptor);
 private:
     int distance; //дистанция для репликации окружающего мира
 };

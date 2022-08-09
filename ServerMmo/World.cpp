@@ -3,18 +3,19 @@
 
 World::World()
 {
-    distance = 1000; //дистанция при которой происходит Replication()
+    distance = 5000; //дистанция при которой происходит Replication()
 }
 
 World::~World()
 {
-    for (int j = 0; j < player.size(); j++)
-        player.erase(player.begin()+j); //удаляем все аватары
+    while(player.size() != 0)
+        player.erase(player.begin()); //удаляем все аватары
+    while(mobs.size() != 0)
+        mobs.erase(mobs.begin());
 }
 
 void World::Replication(int nObj)
 {
-
     for (int j = 0; j < player.size(); j++)
         if (nObj != j)
             if (player[nObj]->avatar.x - distance < player[j]->avatar.x && //использование радиуса(дистанции)
@@ -46,6 +47,14 @@ void World::Damage(unsigned int p_id, int damage)
         if (player[j]->avatar.pid == p_id) {
             player[j]->avatar.hp -= damage; //наносим урон
             emit socketStructWrite(&player[j]->avatar, player[j]); //отправляем структуру данных с изменениями этому же клиенту
+            return; //break;
+        }
+
+    for (int j = 0; j < mobs.size(); j++)
+        if (mobs[j].pid == p_id) {
+            mobs[j].hp -= damage;
+            emit socketStructWrite(&mobs[j], player[0]);
+            if (mobs[j].hp <= 0) mobs.remove(j);
             break;
         }
 }

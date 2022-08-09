@@ -46,7 +46,7 @@ void MainWindow::RemoveList(int item) //удаление строк
 void MainWindow::kickAll()
 {
     for (int j = 0; j < server->clients.size(); j++) //отправка всем запросов о кике
-        server->socketWrite("{\"type\":\"kick\"}", server->clients[j]->avatar.socketDescriptor);
+        server->socketWrite("{\"Protocol\":\"kick\"}", server->clients[j]->avatar.socketDescriptor);
 }
 
 void MainWindow::on_LaunchServer_clicked() //запуск/отключение сервера
@@ -75,6 +75,6 @@ void MainWindow::on_LaunchServer_clicked() //запуск/отключение �
 void MainWindow::on_pushButton_clicked()
 { //кик выбранного игрока
     QByteArray itog;
-    itog = "{\"type\":\"kick\"}";
+    itog = "{\"Protocol\":\"kick\"}";
     server->socketWrite(itog, server->clients[ui->listWidget->currentRow()]->avatar.socketDescriptor);
 }

@@ -6,6 +6,7 @@
 #include "database.h"
 #include "identification.h"
 #include "World.h"
+#include "ServersMap.h" //test
 
 class Server : public QTcpServer
 {
@@ -26,8 +27,9 @@ public:
 
     identification *aut;
     Database *part; //класс базы данных
-    World *world; //класс мира
+    World *world; //Общий мир (хранит всех игроков. Мобов не хранит)
 
+    QVector<Serv01Map*> maps; //активные сервер-карты
 public slots:
 
     void incomingConnection(int socketDescriptor);//новое подключение
